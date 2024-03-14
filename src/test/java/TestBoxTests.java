@@ -1,15 +1,12 @@
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-
 import java.io.File;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
-
 
 public class TestBoxTests {
 
@@ -26,41 +23,50 @@ public class TestBoxTests {
 
         open("/automation-practice-form");
 
-
-        //firstName, lastName, Email, Mobile, Current Address, Subjects - однотипные элменты с заполненем поля текстом.
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("Ivanov2904.I@list.ru");
-        $("#userNumber").setValue("89377999147");
-        $("#currentAddress").setValue("Country, City, Street, House №1");
-
-        $("#uploadPicture").uploadFile(new File("src/png.jpg")); //Picture
-
-        //Выбор пола.
+        $("#userNumber").setValue("8937799914");
+        $("#currentAddress").setValue("Country, City, Street, House 1");
+        $("#uploadPicture").uploadFile(new File("src/png.jpg"));
         $("[for=\"gender-radio-1\"]").click();
+        $("[for=\"hobbies-checkbox-1\"]").click();
+        $("[for=\"hobbies-checkbox-3\"]").click();
+
+        $("#subjectsInput").setValue("History").pressEnter();
+
+        $(byText("Select State")).click();
+        $(byText("Haryana")).click();
+        $(byText("Select City")).click();
+        $(byText("Karnal")).click();
 
 
-        //Выбор года.
+
+
+
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
-        $(byText("1990")).click();
+        $("[value=\"2010\"]").click();
+        $("[aria-label=\"Choose Monday, March 15th, 2010\"]").click();
+
+        //$("#submit").click(); //submit
 
 
-        $("#dateOfBirthInput").click();
-        $(".react-datepicker__month-select").click();
-        $(byText("September")).click();
-        //Выбор месяца.
+    //ассерты
+        $(".table-responsive").shouldHave(text("Ivan Ivanov"));
+        $(".table-responsive").shouldHave(text("Ivanov2904.I@list.ru"));
+        $(".table-responsive").shouldHave(text("Male"));
+        $(".table-responsive").shouldHave(text("8937799914"));
+        $(".table-responsive").shouldHave(text(""));
+        $(".table-responsive").shouldHave(text("History"));
+        $(".table-responsive").shouldHave(text("Sports, Music"));
+        $(".table-responsive").shouldHave(text("png.jpg"));
+        $(".table-responsive").shouldHave(text("Country, City, Street, House 1"));
+        $(".table-responsive").shouldHave(text("Haryana Karnal"));
 
 
 
 
-
-
-
-        $("#submit").click(); //submit
-
-
-        $("#subjectsInput").shouldHave(text("Ivan"));
     }
 
 }
