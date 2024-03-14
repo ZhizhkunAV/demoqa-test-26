@@ -30,9 +30,9 @@ public class TestBoxTests {
 
         $("#uploadPicture").uploadFromClasspath("png.jpg");
 
-        $("[for=\"gender-radio-1\"]").click();
-        $("[for=\"hobbies-checkbox-1\"]").click();
-        $("[for=\"hobbies-checkbox-3\"]").click();
+        $("[for=gender-radio-1]").click();
+        $("[for=hobbies-checkbox-1]").click();
+        $("[for=hobbies-checkbox-3]").click();
 
         $("#subjectsInput").setValue("History").pressEnter();
 
@@ -44,8 +44,8 @@ public class TestBoxTests {
 
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
-        $("[value=\"1990\"]").click();
-        $("[aria-label=\"Choose Thursday, March 15th, 1990\"]").click();
+        $("[value='1990']").click();
+        $("[aria-label='Choose Thursday, March 15th, 1990']").click();
 
         $("#submit").click();
 
