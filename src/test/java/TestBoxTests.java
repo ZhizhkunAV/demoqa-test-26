@@ -3,8 +3,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.Selenide.*;
 
 public class TestBoxTests {
 
@@ -13,15 +12,15 @@ public class TestBoxTests {
         Configuration.baseUrl ="https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.holdBrowserOpen = true;
     }
 
     @Test
     void fillFormTest() {
 
         open("/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
-        //Для читаемости разбил по типам элементов.
         $("#firstName").setValue("Ivan");
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("Ivanov2904.I@list.ru");
@@ -36,16 +35,16 @@ public class TestBoxTests {
 
         $("#subjectsInput").setValue("History").pressEnter();
 
-        $(byText("Select State")).click();
+        $("#state").click();
         $(byText("Haryana")).click();
-        $(byText("Select City")).click();
+        $("#city").click();
         $(byText("Karnal")).click();
 
 
         $("#dateOfBirthInput").click();
         $(".react-datepicker__year-select").click();
         $("[value='1990']").click();
-        $("[aria-label='Choose Thursday, March 15th, 1990']").click();
+        $(".react-datepicker__month").$(byText("15")).click();
 
         $("#submit").click();
 
@@ -61,7 +60,7 @@ public class TestBoxTests {
         $(".table-responsive").shouldHave(text("Country, City, Street, House 1"));
         $(".table-responsive").shouldHave(text("Haryana Karnal"));
 
-        $(byText("Close")).click(); //Закрыли заполненную форму после ее открытия.
+        $(byText("Close")).click();
     }
 
 }
