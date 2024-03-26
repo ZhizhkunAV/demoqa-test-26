@@ -1,31 +1,26 @@
-import com.codeborne.selenide.Configuration;
-import org.junit.jupiter.api.BeforeAll;
+package tests;
+
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
+
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestBoxTests {
+public class RegistrationsTest extends BeforeTests{
 
-    @BeforeAll
-    static void beforeAll(){
-        Configuration.baseUrl ="https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
-        Configuration.pageLoadStrategy = "eager";
-    }
 
+    RegistrationPage registrationPage = new RegistrationPage();
     @Test
-    void fillFormTest() {
+    void successFormTest() {
 
-        open("/automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        registrationPage.openPage()
+                .setFirstName("Ivan")
+                .setLastNameInput("Ivanov")
+                .setUserEmailInput("Ivanov2904.I@list.ru")
+                .setUserNumberInput("8937799914")
+                .setCurrentAddress("Country, City, Street, House 1");
 
-        $("#firstName").setValue("Ivan");
-        $("#lastName").setValue("Ivanov");
-        $("#userEmail").setValue("Ivanov2904.I@list.ru");
-        $("#userNumber").setValue("8937799914");
-        $("#currentAddress").setValue("Country, City, Street, House 1");
 
         $("#uploadPicture").uploadFromClasspath("png.jpg");
 
@@ -62,5 +57,4 @@ public class TestBoxTests {
 
         $(byText("Close")).click();
     }
-
 }
