@@ -3,18 +3,19 @@ package pages;
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 
+import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     public RegistrationPage openPage() {
-    open("https://demoqa.com/automation-practice-form");
-    executeJavaScript("$('#fixedban').remove()");
-    executeJavaScript("$('footer').remove()");
+        open("https://demoqa.com/automation-practice-form");
+        executeJavaScript("$('#fixedban').remove()");
+        executeJavaScript("$('footer').remove()");
 
-    return this;
-}
+        return this;
+    }
     CalendarComponent calendarComponent = new CalendarComponent();
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
@@ -28,7 +29,9 @@ public class RegistrationPage {
             stateInput = $("#state"),
             stateCityWrapper = $("#stateCity-wrapper"),
             cityInput =  $("#city"),
-            calendarInput = $("#dateOfBirthInput");
+            calendarInput = $("#dateOfBirthInput"),
+            submitClick = $("#submit"),
+            submitClickE = $(byText("Close"));
 
 
 
@@ -69,13 +72,7 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkUserHobbiesOne(String value) {
-        userHobbies.$(byText(value)).click();
-
-        return this;
-    }
-
-    public RegistrationPage checkUserHobbiesTwo(String value) {
+    public RegistrationPage checkUserHobbies(String value) {
         userHobbies.$(byText(value)).click();
 
         return this;
@@ -92,7 +89,6 @@ public class RegistrationPage {
 
         return this;
     }
-
 
     public RegistrationPage setState(String value) {
         stateInput.click();
@@ -113,6 +109,25 @@ public class RegistrationPage {
         calendarComponent.setDate(day, month, year);
 
         return this;
+    }
 
-}
+    public RegistrationPage submitClickButton () {
+        submitClick.click();
+
+        return this;
+    }
+
+    public RegistrationPage checkResult(String key, String value) {
+        $(".table-responsive").$(byText(key)).parent()
+                .shouldHave(text(value));
+
+        return this;
+    }
+
+    public RegistrationPage submitClickExit () {
+        submitClickE.click();
+
+        return this;
+    }
+
 }
