@@ -21,31 +21,27 @@ public class RegistrationsTest extends BeforeTests{
                 .setUserNumberInput("8937799914")
                 .setCurrentAddress("Country, City, Street, House 1")
                 .checkUserGender("Male")
-                .checkUserHobbiesOne("Sports")
-                .checkUserHobbiesTwo("Music")
+                .checkUserHobbies("Sports")
+                .checkUserHobbies("Music")
                 .addUploadPictures("images/png.jpg")
                 .setSubjectsInput("History")
                 .setState("Haryana")
                 .setCity("Karnal")
-                .setBirthDate("21`", "August", "1995");
-
-
-
-
-        $("#submit").click();
+                .setBirthDate("22", "August", "1991")
+                .submitClickButton();
 
         //ассерты
-        $(".table-responsive").shouldHave(text("Ivan Ivanov"));
-        $(".table-responsive").shouldHave(text("Ivanov2904.I@list.ru"));
-        $(".table-responsive").shouldHave(text("Male"));
-        $(".table-responsive").shouldHave(text("8937799914"));
-        $(".table-responsive").shouldHave(text("21 August,1995"));
-        $(".table-responsive").shouldHave(text("History"));
-        $(".table-responsive").shouldHave(text("Sports, Music"));
-        $(".table-responsive").shouldHave(text("png.jpg"));
-        $(".table-responsive").shouldHave(text("Country, City, Street, House 1"));
-        $(".table-responsive").shouldHave(text("Haryana Karnal"));
+        registrationPage.checkResult("Student Name", "Ivan Ivanov")
+        .checkResult("Student Email", "Ivanov2904.I@list.ru")
+        .checkResult("Gender", "Male")
+        .checkResult("Mobile", "8937799914")
+        .checkResult("Date of Birth", "22 August,1991")
+        .checkResult("Subjects", "History")
+        .checkResult("Hobbies", "Sports, Music")
+        .checkResult("Picture", "png.jpg")
+        .checkResult("Address", "Country, City, Street, House 1")
+        .checkResult("State and City", "Haryana Karnal")
+        .submitClickExit();
 
-        $(byText("Close")).click();
     }
 }
