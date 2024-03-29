@@ -2,7 +2,7 @@ package tests.Registration;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
-import tests.Registration.ActionsInTests;
+
 
 
 public class RegistrationsTest extends ActionsInTests {
