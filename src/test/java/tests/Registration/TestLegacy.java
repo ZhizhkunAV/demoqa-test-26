@@ -1,4 +1,4 @@
-package tests;
+package tests.Registration;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
@@ -7,13 +7,14 @@ import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
-public class Examples {
+public class TestLegacy {
 
     @BeforeAll
     static void beforeAll(){
         Configuration.baseUrl ="https://demoqa.com";
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = "1366x768";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.holdBrowserOpen = true;
     }
 
     @Test
@@ -27,7 +28,7 @@ public class Examples {
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("Ivanov2904.I@list.ru");
         $("#userNumber").setValue("8937799914");
-        $("#currentAddress").setValue("Country, City, Street, House 1");
+        $("#currentAddress").setValue("Country, City, Street, House № 1");
 
         $("#uploadPicture").uploadFromClasspath("images/png.jpg");
 

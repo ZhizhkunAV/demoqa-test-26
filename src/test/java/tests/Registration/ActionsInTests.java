@@ -1,9 +1,11 @@
-package tests;
+package tests.Registration;
 
 import com.codeborne.selenide.Configuration;
+import com.codeborne.selenide.Selenide;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
-public class BeforeTests {
+public class ActionsInTests {
 
     @BeforeAll
     static void beforeAll(){
@@ -12,4 +14,8 @@ public class BeforeTests {
         Configuration.pageLoadStrategy = "eager";
     }
 
+    @AfterEach
+    void afterEach(){
+        Selenide.closeWebDriver();
+    }
 }
