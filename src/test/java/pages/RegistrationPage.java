@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     public RegistrationPage openPage() {
-        open("https://demoqa.com/automation-practice-form");
+        open("/automation-practice-form");
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
@@ -32,8 +32,6 @@ public class RegistrationPage {
             calendarInput = $("#dateOfBirthInput"),
             submitClick = $("#submit"),
             submitClickE = $(byText("Close"));
-
-
 
 
     public RegistrationPage setFirstName(String value) {
@@ -130,4 +128,9 @@ public class RegistrationPage {
         return this;
     }
 
+    public RegistrationPage submitClickButtonisDisplayed () {
+        submitClick.isDisplayed();
+
+        return this;
+    }
 }
