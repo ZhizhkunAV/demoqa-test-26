@@ -4,23 +4,22 @@ import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
 
 
-
 public class RegistrationsTest extends ActionsInTests {
-
 
     RegistrationPage registrationPage = new RegistrationPage();
     @Test
     void successFormTest() {
 
         registrationPage.openPage()
+                .bannerOff()
                 .setFirstName("Ivan")
                 .setLastNameInput("Ivanov")
                 .setUserEmailInput("Ivanov2904.I@list.ru")
                 .setUserNumberInput("8937799914")
                 .setCurrentAddress("Country, City, Street, House 1")
-                .checkUserGender("Male")
-                .checkUserHobbies("Sports")
-                .checkUserHobbies("Music")
+                .selectUserGender("Male")
+                .selectUserHobbies("Sports")
+                .selectUserHobbies("Music")
                 .addUploadPictures("images/png.jpg")
                 .setSubjectsInput("History")
                 .setState("Haryana")
@@ -43,13 +42,14 @@ public class RegistrationsTest extends ActionsInTests {
     }
 
     @Test
-    void successFormTestMinimumField() {
+    void successFormMinimumFieldTest() {
 
         registrationPage.openPage()
+                .bannerOff()
                 .setFirstName("Ivan")
                 .setLastNameInput("Ivanov")
                 .setUserNumberInput("8937799914")
-                .checkUserGender("Male")
+                .selectUserGender("Male")
                 .submitClickButton();
 
         //ассерты
@@ -63,9 +63,10 @@ public class RegistrationsTest extends ActionsInTests {
     void emptyFormTest() {
 
         registrationPage.openPage()
+                .bannerOff()
                 .setFirstName("Ivan")
                 .setLastNameInput("Ivanov")
-                .checkUserGender("Male");
+                .selectUserGender("Male");
         //ассерты
         registrationPage.submitClickButtonisDisplayed();
     }

@@ -9,6 +9,11 @@ import static com.codeborne.selenide.Selenide.*;
 public class TextBoxPage {
     public TextBoxPage openPage() {
         open("/text-box");
+
+        return this;
+    }
+
+    public TextBoxPage bannOff(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 

@@ -12,6 +12,7 @@ public class TestBox extends ActionsInTests {
     @Test
     void testBox(){
         textboxpage.openPage()
+                .bannOff()
                 .inputUserName("Ivanov Ivan Ivanovich")
                 .inputUserEmail("sdf@list.ru")
                 .inputCurrentAddress("Current Best Address")

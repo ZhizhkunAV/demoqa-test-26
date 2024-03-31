@@ -2,8 +2,8 @@ package pages;
 
 import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
+import pages.components.ModalFormComponent;
 
-import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
@@ -11,12 +11,17 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 public class RegistrationPage {
     public RegistrationPage openPage() {
         open("/automation-practice-form");
+
+        return this;
+    }
+    public RegistrationPage bannerOff(){
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
         return this;
     }
-    CalendarComponent calendarComponent = new CalendarComponent();
+    private final CalendarComponent calendarComponent = new CalendarComponent();
+    private final ModalFormComponent modalformcomponent = new ModalFormComponent();
     private SelenideElement firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmailInput = $("#userEmail"),
@@ -31,7 +36,7 @@ public class RegistrationPage {
             cityInput =  $("#city"),
             calendarInput = $("#dateOfBirthInput"),
             submitClick = $("#submit"),
-            submitClickE = $(byText("Close"));
+            submitClickE = $("#closeLargeModal");
 
 
     public RegistrationPage setFirstName(String value) {
@@ -64,13 +69,13 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage checkUserGender(String value) {
+    public RegistrationPage selectUserGender(String value) {
         userGender.$(byText(value)).click();
 
         return this;
     }
 
-    public RegistrationPage checkUserHobbies(String value) {
+    public RegistrationPage selectUserHobbies(String value) {
         userHobbies.$(byText(value)).click();
 
         return this;
@@ -116,8 +121,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        $(".table-responsive").$(byText(key)).parent()
-                .shouldHave(text(value));
+        modalformcomponent.checkResultComponents(key,value);
 
         return this;
     }
