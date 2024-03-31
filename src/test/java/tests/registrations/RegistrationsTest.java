@@ -1,4 +1,4 @@
-package tests.Registration;
+package tests.registrations;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;

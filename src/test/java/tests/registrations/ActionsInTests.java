@@ -1,4 +1,4 @@
-package tests.Registration;
+package tests.registrations;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;

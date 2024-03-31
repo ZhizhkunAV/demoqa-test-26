@@ -1,9 +1,9 @@
-package tests.TextBox;
+package tests.textboxs;
 
 
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-import tests.Registration.ActionsInTests;
+import tests.registrations.ActionsInTests;
 
 
 public class TestBox extends ActionsInTests {
