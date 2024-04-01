@@ -2,10 +2,18 @@ package tests.registrations;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import faker.FakerData;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import pages.RegistrationPage;
+import pages.TextBoxPage;
 
 public class ActionsInTests {
+
+    public RegistrationPage registrationPage = new RegistrationPage();
+    public TextBoxPage textboxpage = new TextBoxPage();
+
+    public FakerData fakerdata = new FakerData();
 
     @BeforeAll
     static void beforeAll(){

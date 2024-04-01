@@ -6,15 +6,15 @@ import pages.RegistrationPage;
 
 public class RegistrationsTest extends ActionsInTests {
 
-    RegistrationPage registrationPage = new RegistrationPage();
+
     @Test
     void successFormTest() {
 
         registrationPage.openPage()
                 .bannerOff()
-                .setFirstName("Ivan")
-                .setLastNameInput("Ivanov")
-                .setUserEmailInput("Ivanov2904.I@list.ru")
+                .setFirstName(fakerdata.firstName)
+                .setLastNameInput(fakerdata.lastName)
+                .setUserEmailInput(fakerdata.userEmeil)
                 .setUserNumberInput("8937799914")
                 .setCurrentAddress("Country, City, Street, House 1")
                 .selectUserGender("Male")
@@ -28,8 +28,8 @@ public class RegistrationsTest extends ActionsInTests {
                 .submitClickButton();
 
         //ассерты
-        registrationPage.checkResult("Student Name", "Ivan Ivanov")
-                .checkResult("Student Email", "Ivanov2904.I@list.ru")
+        registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
+                .checkResult("Student Email", fakerdata.userEmeil)
                 .checkResult("Gender", "Male")
                 .checkResult("Mobile", "8937799914")
                 .checkResult("Date of Birth", "22 August,1991")
@@ -46,14 +46,14 @@ public class RegistrationsTest extends ActionsInTests {
 
         registrationPage.openPage()
                 .bannerOff()
-                .setFirstName("Ivan")
-                .setLastNameInput("Ivanov")
+                .setFirstName(fakerdata.firstName)
+                .setLastNameInput(fakerdata.lastName)
                 .setUserNumberInput("8937799914")
                 .selectUserGender("Male")
                 .submitClickButton();
 
         //ассерты
-        registrationPage.checkResult("Student Name", "Ivan Ivanov")
+        registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
                 .checkResult("Gender", "Male")
                 .setUserNumberInput("8937799914")
                 .submitClickExit();
@@ -64,8 +64,8 @@ public class RegistrationsTest extends ActionsInTests {
 
         registrationPage.openPage()
                 .bannerOff()
-                .setFirstName("Ivan")
-                .setLastNameInput("Ivanov")
+                .setFirstName(fakerdata.firstName)
+                .setLastNameInput(fakerdata.lastName)
                 .selectUserGender("Male");
         //ассерты
         registrationPage.submitClickButtonisDisplayed();

@@ -7,7 +7,7 @@ import tests.registrations.ActionsInTests;
 
 
 public class TestBox extends ActionsInTests {
-    TextBoxPage textboxpage = new TextBoxPage();
+
 
     @Test
     void testBox(){
