@@ -16,12 +16,11 @@ public class RegistrationsTest extends ActionsInTests {
                 .setLastNameInput(fakerdata.lastName)
                 .setUserEmailInput(fakerdata.userEmeil)
                 .setUserNumberInput("8937799914")
-                .setCurrentAddress("Country, City, Street, House 1")
-                .selectUserGender("Male")
-                .selectUserHobbies("Sports")
-                .selectUserHobbies("Music")
+                .setCurrentAddress(fakerdata.userAdress)
+                .selectUserGender(fakerdata.userGender)
+                .selectUserHobbies(fakerdata.userHobbies)
                 .addUploadPictures("images/png.jpg")
-                .setSubjectsInput("History")
+                .setSubjectsInput(fakerdata.userSubjects)
                 .setState("Haryana")
                 .setCity("Karnal")
                 .setBirthDate("22", "August", "1991")
@@ -30,13 +29,13 @@ public class RegistrationsTest extends ActionsInTests {
         //ассерты
         registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
                 .checkResult("Student Email", fakerdata.userEmeil)
-                .checkResult("Gender", "Male")
+                .checkResult("Gender", fakerdata.userGender)
                 .checkResult("Mobile", "8937799914")
                 .checkResult("Date of Birth", "22 August,1991")
-                .checkResult("Subjects", "History")
-                .checkResult("Hobbies", "Sports, Music")
+                .checkResult("Subjects", fakerdata.userSubjects)
+                .checkResult("Hobbies", fakerdata.userHobbies)
                 .checkResult("Picture", "png.jpg")
-                .checkResult("Address", "Country, City, Street, House 1")
+                .checkResult("Address", fakerdata.userAdress)
                 .checkResult("State and City", "Haryana Karnal")
                 .submitClickExit();
     }
@@ -49,12 +48,12 @@ public class RegistrationsTest extends ActionsInTests {
                 .setFirstName(fakerdata.firstName)
                 .setLastNameInput(fakerdata.lastName)
                 .setUserNumberInput("8937799914")
-                .selectUserGender("Male")
+                .selectUserGender(fakerdata.userGender)
                 .submitClickButton();
 
         //ассерты
         registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
-                .checkResult("Gender", "Male")
+                .checkResult("Gender", fakerdata.userGender)
                 .setUserNumberInput("8937799914")
                 .submitClickExit();
     }
@@ -66,7 +65,7 @@ public class RegistrationsTest extends ActionsInTests {
                 .bannerOff()
                 .setFirstName(fakerdata.firstName)
                 .setLastNameInput(fakerdata.lastName)
-                .selectUserGender("Male");
+                .selectUserGender(fakerdata.userGender);
         //ассерты
         registrationPage.submitClickButtonisDisplayed();
     }
