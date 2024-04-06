@@ -1,11 +1,10 @@
 package tests.registrations;
 
 import org.junit.jupiter.api.Test;
-import pages.RegistrationPage;
+
 
 
 public class RegistrationsTest extends ActionsInTests {
-
 
     @Test
     void successFormTest() {
@@ -15,28 +14,28 @@ public class RegistrationsTest extends ActionsInTests {
                 .setFirstName(fakerdata.firstName)
                 .setLastNameInput(fakerdata.lastName)
                 .setUserEmailInput(fakerdata.userEmeil)
-                .setUserNumberInput("8937799914")
+                .setUserNumberInput(fakerdata.userPhone)
                 .setCurrentAddress(fakerdata.userAdress)
                 .selectUserGender(fakerdata.userGender)
                 .selectUserHobbies(fakerdata.userHobbies)
-                .addUploadPictures("images/png.jpg")
+                .addUploadPictures(fakerdata.userPicture)
                 .setSubjectsInput(fakerdata.userSubjects)
-                .setState("Haryana")
-                .setCity("Karnal")
-                .setBirthDate("22", "August", "1991")
+                .setState(fakerdata.userState)
+                .setCity(fakerdata.userCity)
+                .setBirthDate(fakerdata.userDay, fakerdata.userMonth, fakerdata.userYear)
                 .submitClickButton();
 
         //ассерты
         registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
                 .checkResult("Student Email", fakerdata.userEmeil)
                 .checkResult("Gender", fakerdata.userGender)
-                .checkResult("Mobile", "8937799914")
-                .checkResult("Date of Birth", "22 August,1991")
+                .checkResult("Mobile", fakerdata.userPhone)
+                .checkResult("Date of Birth", fakerdata.userDay + " " + fakerdata.userMonth + "," + fakerdata.userYear)
                 .checkResult("Subjects", fakerdata.userSubjects)
                 .checkResult("Hobbies", fakerdata.userHobbies)
-                .checkResult("Picture", "png.jpg")
+                .checkResult("Picture", fakerdata.userPicture)
                 .checkResult("Address", fakerdata.userAdress)
-                .checkResult("State and City", "Haryana Karnal")
+                .checkResult("State and City", fakerdata.userState + " " + fakerdata.userCity)
                 .submitClickExit();
     }
 
@@ -47,14 +46,14 @@ public class RegistrationsTest extends ActionsInTests {
                 .bannerOff()
                 .setFirstName(fakerdata.firstName)
                 .setLastNameInput(fakerdata.lastName)
-                .setUserNumberInput("8937799914")
+                .setUserNumberInput(fakerdata.userPhone)
                 .selectUserGender(fakerdata.userGender)
                 .submitClickButton();
 
         //ассерты
         registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
                 .checkResult("Gender", fakerdata.userGender)
-                .setUserNumberInput("8937799914")
+                .checkResult("Mobile", fakerdata.userPhone)
                 .submitClickExit();
     }
 

@@ -30,7 +30,7 @@ public class TestLegacy {
         $("#userNumber").setValue("8937799914");
         $("#currentAddress").setValue("Country, City, Street, House № 1");
 
-        $("#uploadPicture").uploadFromClasspath("images/png.jpg");
+        $("#uploadPicture").uploadFromClasspath("png.jpg");
 
         $("[for=gender-radio-1]").click();
         $("[for=hobbies-checkbox-1]").click();
@@ -59,7 +59,7 @@ public class TestLegacy {
         $(".table-responsive").shouldHave(text("15 March,1990"));
         $(".table-responsive").shouldHave(text("History"));
         $(".table-responsive").shouldHave(text("Sports, Music"));
-        $(".table-responsive").shouldHave(text("images/png.jpg"));
+        $(".table-responsive").shouldHave(text("png.jpg"));
         $(".table-responsive").shouldHave(text("Country, City, Street, House 1"));
         $(".table-responsive").shouldHave(text("Haryana Karnal"));
 
