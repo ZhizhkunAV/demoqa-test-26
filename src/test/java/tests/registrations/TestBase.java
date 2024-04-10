@@ -8,10 +8,10 @@ import org.junit.jupiter.api.BeforeAll;
 import pages.RegistrationPage;
 import pages.TextBoxPage;
 
-public class ActionsInTests {
+public class TestBase {
 
-    public RegistrationPage registrationPage = new RegistrationPage();
-    public TextBoxPage textboxpage = new TextBoxPage();
+
+
 
     public RandomData fakerdata = new RandomData();
 

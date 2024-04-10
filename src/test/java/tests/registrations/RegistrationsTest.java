@@ -1,10 +1,12 @@
 package tests.registrations;
 
 import org.junit.jupiter.api.Test;
+import pages.RegistrationPage;
 
 
+public class RegistrationsTest extends TestBase {
 
-public class RegistrationsTest extends ActionsInTests {
+    public RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void successFormTest() {
@@ -25,7 +27,6 @@ public class RegistrationsTest extends ActionsInTests {
                 .setBirthDate(fakerdata.userDay, fakerdata.userMonth, fakerdata.userYear)
                 .submitClickButton();
 
-        //ассерты
         registrationPage.checkResult("Student Name", fakerdata.firstName + " " + fakerdata.lastName)
                 .checkResult("Student Email", fakerdata.userEmeil)
                 .checkResult("Gender", fakerdata.userGender)

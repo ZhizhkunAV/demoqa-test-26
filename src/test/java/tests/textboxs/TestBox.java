@@ -3,14 +3,15 @@ package tests.textboxs;
 
 import org.junit.jupiter.api.Test;
 import pages.TextBoxPage;
-import tests.registrations.ActionsInTests;
+import tests.registrations.TestBase;
 
 
-public class TestBox extends ActionsInTests {
+public class TestBox extends TestBase {
 
+    public TextBoxPage textboxpage = new TextBoxPage();
 
     @Test
-    void testBox(){
+    void testBoxTest(){
         textboxpage.openPage()
                 .bannOff()
                 .inputUserName("Ivanov Ivan Ivanovich")
