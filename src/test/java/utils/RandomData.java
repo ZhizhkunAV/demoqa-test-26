@@ -6,6 +6,7 @@ import java.util.Locale;
 
 public class RandomData {
 
+
     public String userGender = getGender();
     public String userHobbies = getHobbies();
     public String userSubjects = getSubjects();
@@ -16,7 +17,6 @@ public class RandomData {
     public String userYear = getYear();
     public String userDay = getDay();
     public String userMonth = getMonth();
-
 
 
     static Faker faker = new Faker(new Locale("en-GB"));
@@ -32,14 +32,14 @@ public class RandomData {
 
     }
 
-    public static String getHobbies(){
+    public static String getHobbies() {
         String[] hobbies = {"Sports", "Reading", "Music"};
 
-        return  faker.options().option(hobbies);
+        return faker.options().option(hobbies);
 
     }
 
-    public static String getSubjects(){
+    public static String getSubjects() {
         String[] subjects = {"History", "Computer Science", "Physics", "Economics"};
 
         return faker.options().option(subjects);
@@ -88,7 +88,7 @@ public class RandomData {
 
     public static String getDay() {
 
-        return String.valueOf(faker.number().numberBetween(1, 28));
+        return String.format("%02d", faker.number().numberBetween(1, 28));
     }
 
     public static String getMonth() {

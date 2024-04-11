@@ -2,11 +2,14 @@ package tests.registrations;
 
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
+import utils.RandomData;
 
 
 public class RegistrationsTest extends TestBase {
 
     public RegistrationPage registrationPage = new RegistrationPage();
+    public RandomData fakerdata = new RandomData();
+
 
     @Test
     void successFormTest() {
