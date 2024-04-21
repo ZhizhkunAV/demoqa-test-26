@@ -14,12 +14,14 @@ public class RegistrationPage {
 
         return this;
     }
-    public RegistrationPage bannerOff(){
+
+    public RegistrationPage bannerOff() {
         executeJavaScript("$('#fixedban').remove()");
         executeJavaScript("$('footer').remove()");
 
         return this;
     }
+
     private final CalendarComponent calendarComponent = new CalendarComponent();
     private final ModalFormComponent modalformcomponent = new ModalFormComponent();
     private SelenideElement firstNameInput = $("#firstName"),
@@ -33,7 +35,7 @@ public class RegistrationPage {
             subjectsInput = $("#subjectsInput"),
             stateInput = $("#state"),
             stateCityWrapper = $("#stateCity-wrapper"),
-            cityInput =  $("#city"),
+            cityInput = $("#city"),
             calendarInput = $("#dateOfBirthInput"),
             submitClick = $("#submit"),
             submitClickE = $("#closeLargeModal");
@@ -114,25 +116,25 @@ public class RegistrationPage {
         return this;
     }
 
-    public RegistrationPage submitClickButton () {
+    public RegistrationPage submitClickButton() {
         submitClick.click();
 
         return this;
     }
 
     public RegistrationPage checkResult(String key, String value) {
-        modalformcomponent.checkResultComponents(key,value);
+        modalformcomponent.checkResultComponents(key, value);
 
         return this;
     }
 
-    public RegistrationPage submitClickExit () {
+    public RegistrationPage submitClickExit() {
         submitClickE.click();
 
         return this;
     }
 
-    public RegistrationPage submitClickButtonisDisplayed () {
+    public RegistrationPage submitClickButtonisDisplayed() {
         submitClick.isDisplayed();
 
         return this;
