@@ -7,8 +7,8 @@ repositories {
     mavenCentral()
 }
 
-def allureVersion = "2.21.0",
-    selenideVersion = "6.19.1"
+def allureVersion = "2.27.0",
+    selenideVersion = "7.2.3"
 
 allure {
     report {
@@ -24,17 +24,27 @@ allure {
     }
 }
 
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
 dependencies {
+    runtimeOnly 'org.aspectj:aspectjweaver:1.9.22'
     testImplementation(
-            'com.codeborne:selenide:7.2.1',
-            'com.github.javafaker:javafaker:1.0.2',
-            'org.junit.jupiter:junit-jupiter:5.9.3',
+            "com.codeborne:selenide:$selenideVersion",
+            "io.qameta.allure:allure-selenide:$allureVersion",
+            "org.junit.jupiter:junit-jupiter:5.10.0",
             'org.slf4j:slf4j-simple:2.0.7',
-            'io.qameta.allure:allure-selenide:2.27.0'
+            'com.github.javafaker:javafaker:1.0.2'
     )
 }
 
 tasks.withType(Test) {
+    systemProperties(System.getProperties())
     useJUnitPlatform()
 
     testLogging {
@@ -45,11 +55,6 @@ tasks.withType(Test) {
     }
 }
 
-task simple_test(type: Test) {
-    useJUnitPlatform {
-        includeTags("simple")
-    }
-}
 
 task demoqa_test(type: Test) {
     useJUnitPlatform {
