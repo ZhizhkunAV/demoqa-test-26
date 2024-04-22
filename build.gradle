@@ -3,29 +3,26 @@ plugins {
     id 'io.qameta.allure' version '2.11.2'
 }
 
-allure {
-    report {
-        version.set('2.27.0')
-    }
-    adapter { // отвечает за появление папочки build/allure-results
-        aspectjWeaver.set(true) //обработка аннотации @Step
-        frameworks {
-            junit5 { //название фреймворка
-                adapterVersion.set("2.27.0") //версия интеграции фреймворка и Allure
-            }
-        }
-    }
-}
-
-group 'org.example24'
-version '1.0-SNAPSHOT'
-
 repositories {
     mavenCentral()
 }
 
-compileJava { options.encoding = 'UTF-8' }
-compileTestJava { options.encoding = 'UTF-8' }
+def allureVersion = "2.21.0",
+    selenideVersion = "6.19.1"
+
+allure {
+    report {
+        version.set(allureVersion)
+    }
+    adapter {
+        aspectjWeaver.set(true)
+        frameworks {
+            junit5 {
+                adapterVersion.set(allureVersion)
+            }
+        }
+    }
+}
 
 dependencies {
     testImplementation(
@@ -35,8 +32,6 @@ dependencies {
             'org.slf4j:slf4j-simple:2.0.7',
             'io.qameta.allure:allure-selenide:2.27.0'
     )
-
-    testRuntimeOnly('org.junit.jupiter:junit-jupiter-engine:5.9.0')
 }
 
 tasks.withType(Test) {
@@ -50,10 +45,14 @@ tasks.withType(Test) {
     }
 }
 
+task simple_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("simple")
+    }
+}
 
 task demoqa_test(type: Test) {
     useJUnitPlatform {
         includeTags("demoqa")
     }
 }
-

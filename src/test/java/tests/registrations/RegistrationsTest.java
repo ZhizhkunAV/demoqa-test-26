@@ -1,5 +1,7 @@
 package tests.registrations;
 
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import pages.RegistrationPage;
@@ -14,6 +16,8 @@ public class RegistrationsTest extends TestBase {
 
     @Test
     void successFormTest() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+
 
         registrationPage.openPage()
                 .bannerOff()

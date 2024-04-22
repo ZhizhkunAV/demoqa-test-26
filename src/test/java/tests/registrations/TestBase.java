@@ -2,6 +2,8 @@ package tests.registrations;
 
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
+import com.codeborne.selenide.WebDriverRunner;
+import helpers.Attach;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
 
@@ -19,5 +21,15 @@ public class TestBase {
     @AfterEach
     void afterEach() {
         Selenide.closeWebDriver();
+    }
+
+    @AfterEach
+    void addAttachment() {
+        Attach.pageSource();
+        Attach.screenshotAs("Last screenshot");
+        Attach.addVideo();
+        if (!WebDriverRunner.isFirefox()) {
+            Attach.browserConsoleLogs();
+        }
     }
 }
