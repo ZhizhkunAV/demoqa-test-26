@@ -16,6 +16,7 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
+        Configuration.reportsFolder = System.getProperty("java.io.tmpdir");
     }
 
     @AfterEach
