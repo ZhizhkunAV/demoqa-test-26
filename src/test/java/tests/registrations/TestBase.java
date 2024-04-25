@@ -20,7 +20,6 @@ public class TestBase {
     static void beforeAll() {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
-        Configuration.remote = "https://user1:1234@selenoid.autotests.cloud/wd/hub";
         Configuration.remote = "https://user1:1234@" + System.getProperty("HOST", "selenoid.autotests.cloud") + "/wd/hub";
         Configuration.browser = System.getProperty("browser");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
