@@ -116,7 +116,6 @@ public class RegistrationsTest extends TestBase {
         });
     }
 
-    @Disabled
     @DisplayName("Проверка формы на минимальное количество заполняемых полей")
     @Severity(SeverityLevel.NORMAL)
     @Story("Пользователь заполняет минимальное количество полей")
