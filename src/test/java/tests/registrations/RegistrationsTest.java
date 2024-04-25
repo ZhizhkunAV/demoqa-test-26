@@ -18,7 +18,6 @@ import static io.qameta.allure.Allure.step;
 
 @Owner("ZhizhkunAV")
 @DisplayName("Тест набор с тестами на форму ввода данных")
-@Tag("demoqa")
 public class RegistrationsTest extends TestBase {
 
     public RegistrationPage registrationPage = new RegistrationPage();
@@ -28,6 +27,7 @@ public class RegistrationsTest extends TestBase {
     @Owner("ZhizhkunAV")
     @Story("Пользователь успешно заполняет все поля формы")
     @DisplayName("Позитивный тест - успешное заполнение всех полей")
+    @Tag("smoke")
     @Test
     void successFormTest() {
         SelenideLogger.addListener("allure", new AllureSelenide());
@@ -120,6 +120,7 @@ public class RegistrationsTest extends TestBase {
     @DisplayName("Проверка формы на минимальное количество заполняемых полей")
     @Severity(SeverityLevel.NORMAL)
     @Story("Пользователь заполняет минимальное количество полей")
+    @Tag("smoke")
     @Test
     void successFormMinimumFieldTest() {
 
@@ -161,6 +162,7 @@ public class RegistrationsTest extends TestBase {
     @DisplayName("Негативный тест - не все поля заполнены: кнопка submit не доступна к нажатию")
     @Severity(SeverityLevel.MINOR)
     @Story("Пользователь не заполнил все обязательные поля")
+    @Tag("negative")
     @Test
     void emptyFormTest() {
 
