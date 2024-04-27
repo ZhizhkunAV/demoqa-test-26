@@ -21,10 +21,10 @@ public class TestBase {
         Configuration.baseUrl = "https://demoqa.com";
         Configuration.pageLoadStrategy = "eager";
         //Configuration.remote = "https://user1:1234@" + System.getProperty("wdHost", "selenoid.autotests.cloud") + "/wd/hub";
-        Configuration.remote = System.getProperty("wdHost");
-        Configuration.browser = System.getProperty("browser");
+        Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
         Configuration.browserVersion = System.getProperty("browserVersion", "120.0");
+        Configuration.remote = System.getProperty("wdHost");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
